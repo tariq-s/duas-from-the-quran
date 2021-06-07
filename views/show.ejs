@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+<div class="Container d-flex justify-content-center">
+	<div class="box" style="height: 100%; width: 100%;">
+		<% for (var i = 0; i < dua.ayah.length; i++) { %>
+			<% var h = (85/dua.ayah.length) * 0.7; %>
+			<% var hA = 85 * 0.7 - 85 * 0.7 * 0.08 *(dua.ayah.length - 1); %>
+			<% var hT = 85 * 0.25 - 85 * 0.7 * 0.02 *(dua.ayah.length - 1); %>
+			<div style="height: <%= h / 0.72 %>%;">
+				<div id="arabic" class="ayah d-flex justify-content-center" style="font-size:<%= hA %>px; position: relative;">
+					<div style="position: absolute; bottom: 0;"><%= dua.ayah[i] %></div>
+				</div>
+				<div class="translation" style="font-size:<%= hT %>px;">
+					<%= dua.translation[i] %>
+				</div>
+			</div>
+		<% } %>
+		<div class="reference"><%= dua.reference %></div>
+		<% if (dua.note !== undefined) { %>
+			<div class="note"><%= dua.note %></div>
+		<% } %>
+		<hr>
+	</div>
+</div>
+
+<%- include("partials/footer.ejs") %>
